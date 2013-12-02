@@ -3,9 +3,9 @@ p
 	a(href='/users/new') Create new profile
 
 ul
-	- for(var username in users) {
+	- for(var i in users) {
 		li
-			a(href="/users/" + encodeURIComponent(username))= users[username].name
+			a(href="/users/" + encodeURIComponent(users[i].username))= users[i].name
 	- };
 
 - if (page > 0) {

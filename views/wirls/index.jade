@@ -1,0 +1,18 @@
+h1 Wirls
+p
+	a(href='/wirls/new') Create new wirl
+
+ul
+	- for(var i in wirls) {
+		li
+			a(href="/wirls/" + encodeURIComponent(wirls[i].id))= wirls[i].title
+	- };
+
+- if (page > 0) {
+	a(href="?page=" + (page - 1)) Previous
+	&nbsp;
+- }
+
+- if (! lastPage) {
+	a(href="?page=" + (page + 1)) Next
+- }

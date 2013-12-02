@@ -1,0 +1,17 @@
+h1 New Wirl
+ 
+form(method="POST", action="/wirls")
+	p
+		label(for="url") URL<br />
+		input#url(name="url")
+	p
+		label(for="title") Title<br />
+		input#title(name="title")
+	p
+		label(for="author") Author<br />
+		input#author(type="author", name="author")
+	p
+		label(for="comments") Comments<br />
+		textarea#comments(name="comments")
+	p
+		input(type="submit", value="Create")

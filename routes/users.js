@@ -42,7 +42,7 @@ module.exports = function(app) {
 	});
 
 	app.get('/users/:name', loadUser, function(req, res, next) {
-		if (user) {
+		if (req.user) {
 			res.render('users/profile', {title: "User profile", user: req.user});
 		} else {
 			next();

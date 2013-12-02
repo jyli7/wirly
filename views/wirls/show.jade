@@ -1,0 +1,10 @@
+h1= wirl.title
+
+h2 Information
+p= wirl.url
+p= wirl.author
+p= wirl.comments
+
+form(action="/wirls/" + encodeURIComponent(wirl.id), method="POST")
+	input(name="_method", type="hidden", value="DELETE")
+	input(type="submit", value="Delete")

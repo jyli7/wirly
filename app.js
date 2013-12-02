@@ -4,7 +4,9 @@
  */
 
 var express = require('express')
-  , routes = require('./routes');
+  , routes = require('./routes')
+  , dbURL = 'mongodb://localhost/wirly'
+  , db = require('mongoose').connect(dbURL);
 
 var app = module.exports = express.createServer();
 

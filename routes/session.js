@@ -1,4 +1,4 @@
-var users = require('../data/users');
+var User = require('../data/models/user');
 var notLoggedIn = require('./middleware/not_logged_in');
 
 module.exports = function(app) {
@@ -13,15 +13,19 @@ module.exports = function(app) {
 	})
 
 	app.post('/session', notLoggedIn, function(req, res) {
-
-		if (users[req.body.username] &&
-			users[req.body.username].password === req.body.password) {
-				req.session.user = users[req.body.username];
-				res.redirect('/users');
-		} else {
-				res.redirect('/users/new');
-		}
-	})
+		User.findOne({username: req.body.username, password: req.body.password},
+			function(err, user) {
+				if (err) {
+					return next(err);
+				}
+				if (user) {
+					req.session.user = user;
+					res.redirect('/users');
+				} else {
+					res.redirect('/session/new');
+				}
+			});
+	});
 
 	app.del('/session', function(req, res, next) {
 		req.session.destroy();

@@ -14,9 +14,9 @@ module.exports = function(app) {
 			},
 			function(next) {
 				User.find({})
-					.sort('name', 1)
-					.skip(page * maxUsersPerPage);
-					.limit(maxUsersPerPage);
+					.sort('name')
+					.skip(page * maxUsersPerPage)
+					.limit(maxUsersPerPage)
 					.exec(next);
 			}
 		],
